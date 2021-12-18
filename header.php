@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サンプル</title>
-    <link rel="stylesheet" href="HP.css">
+    <link rel="stylesheet" href="css/HP.css">
 </head>
 
 <body>
@@ -22,10 +22,10 @@
         </nav>
 
         <header>
-            <p><a href="#"><img src="box.jpg" alt="宝箱" class="image1"></a></p>
+            <p><a href="#"><img src="/kadai/images/box.png" alt="宝箱" class="image1"></a></p>
             <h1>たからばこ</h1>
             <a href="new.html" class="btn">ログイン</a>
-            <a href="signup.php" class="btn2">新規登録</a>
+            <a href="/kadai/user/signup.php" class="btn2">新規登録</a>
         </header>
 
     <div class="toggle-btn">

@@ -5,7 +5,7 @@
 
 /*ヘッダー*/
 header{
-  background-image: url("old.jpg");
+  background-image: url("/kadai/images/old.jpg");
   text-align:center;
   padding:20px 0;
 }
@@ -45,6 +45,7 @@ header{
 
 body{
   font-weight: 400;
+  background-color: #F29B76;
 }
 
 main{
@@ -181,4 +182,19 @@ nav .inner ul li a:hover{
   width: 30%;
   margin: 0 0 0 60%;/* 上 右 下 左の余白の数値 */
   /*border:1px solid green;/*枠線(divの範囲がどれくらいかを確認)*/
+}
+
+/*新規登録*/
+form input[type = "userId"],form input[type = "password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #ff69b4;
+  padding: 15px 10px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
+  transition: 0.25s;
+  text-align: center;
 }
