@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
+<div class=gazou>
+    <img src="old.jpg" width="100%" height="100px">
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <title>趣味一覧画面</title>
-    <link rel="stylesheet" href="../HP.css">
-</head>
 <?php
 //ヘッダー読み込み
 require_once __DIR__ . '/../header.php';
@@ -18,6 +14,11 @@ require_once 'hobbylistDB.php';
 
 ?>
 <!-- ここからサイトの表示-->
+<head>
+    <meta charset="UTF-8">
+    <title>趣味一覧画面</title>
+    <link rel="stylesheet" href="hobbylist.css">
+</head>
 <h1>趣味一覧 </h1>
 <main>
 
@@ -59,34 +60,34 @@ require_once 'hobbylistDB.php';
                     <td>
                         <?php
 
-                    foreach ($tasks as $task) {
-                        if ($id == $task['id']) {
-                            echo h($task['tag']);
+                        foreach ($tasks as $task) {
+                            if ($id == $task['id']) {
+                                echo h($task['tag']);
+                            }
                         }
-                    } 
-                ?>
-                </td>
-                <td>
-                    <!-- 編集画面edit.phpにデータを送信-->
-                    <!-- edit.phpをregister_Deadlineと共有にしたい -->
-                    <form action="hobby_edit.php" method="POST">
-                        <input type="hidden" name="id" value="<?= $task['id']; ?>">
-                        <input type="hidden" name="memo" value="<?= $task['memo']; ?>">
-                        <input type="hidden" name="day_at" value="<?= $task['day_at']; ?>">
-                        <input type="hidden" name="tag" value="<?= $task['tag']; ?>">
-                        <input type="hidden" name="URL" value="<?= $task['URL']; ?>">
-                        <input type="submit" name="btn" value="編集">
-                    </form>
-                    <!-- 削除画面delete.phpにデータを送信-->
-                    <form action="hobby_delete.php" method="POST">
-                        <input type="hidden" name="title" value="<?= $task['memo']; ?>">
-                        <input type="hidden" name="day_at" value="<?= $task['day_at']; ?>">
-                        <input type="hidden" name="tag" value="<?= $task['tag']; ?>">
-                        <input type="hidden" name="id" value="<?= $task['id']; ?>">
-                        <input type="submit" name="btn" value="削除">
-                    </form>
-                </td>
-            </tr>
+                        ?>
+                    </td>
+                    <td>
+                        <!-- 編集画面edit.phpにデータを送信-->
+                        <!-- edit.phpをregister_Deadlineと共有にしたい -->
+                        <form action="hobby_edit.php" method="POST">
+                            <input type="hidden" name="id" value="<?= $task['id']; ?>">
+                            <input type="hidden" name="memo" value="<?= $task['memo']; ?>">
+                            <input type="hidden" name="day_at" value="<?= $task['day_at']; ?>">
+                            <input type="hidden" name="tag" value="<?= $task['tag']; ?>">
+                            <input type="hidden" name="URL" value="<?= $task['URL']; ?>">
+                            <input type="submit" name="btn" value="編集">
+                        </form>
+                        <!-- 削除画面delete.phpにデータを送信-->
+                        <form action="hobby_delete.php" method="POST">
+                            <input type="hidden" name="title" value="<?= $task['memo']; ?>">
+                            <input type="hidden" name="day_at" value="<?= $task['day_at']; ?>">
+                            <input type="hidden" name="tag" value="<?= $task['tag']; ?>">
+                            <input type="hidden" name="id" value="<?= $task['id']; ?>">
+                            <input type="submit" name="btn" value="削除">
+                        </form>
+                    </td>
+                </tr>
         <?php
 
             }

@@ -1,3 +1,6 @@
+<div class=gazou>
+    <img src="../old.jpg" width="100%" height="100px">
+</div>
 <?php
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../util.php';
