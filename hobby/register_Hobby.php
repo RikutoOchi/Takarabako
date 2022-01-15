@@ -1,6 +1,3 @@
-<div class=gazou>
-    <img src="old.jpg" width="100%" height="100px">
-</div>
 <?php
 require_once __DIR__ . '/../header.php';
 ?>
@@ -11,7 +8,7 @@ require_once __DIR__ . '/../header.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>趣味登録</title>
-    <link rel="stylesheet" href="register_Hobby.css">
+    <link rel="stylesheet" href="../HP.css">
 </head>
 
 
