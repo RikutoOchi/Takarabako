@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>趣味一覧画面</title>
-    <link rel="stylesheet" href="HP.css">
+    <link rel="stylesheet" href="../HP.css">
 </head>
 <?php
 //ヘッダー読み込み

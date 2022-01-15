@@ -5,9 +5,14 @@
 
 /*ヘッダー*/
 header{
+  /* background-image: url("old.jpg"); */
   background-color:  #FFB899;
   text-align:center;
   padding:20px 0;
+}
+
+body{
+  background-color:  #FFB899;
 }
 
 /* 背景色 */
@@ -17,6 +22,7 @@ body{
                     url("background_gold.png"),
                     url("background_coin.png"),
                     url("background_coin.png");
+
   background-size: 25% auto,
                    15% auto,
                    5% auto,
@@ -25,12 +31,13 @@ body{
                        left bottom,
                        20% 40%,
                        80% 20%;
+
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 /* ログイン、新規登録 */
-.btn,.btn3{
+.btn,.btn2,.btn3{
   border-radius: 5px;
   background-color: #004766;
   padding: 10px;
@@ -54,6 +61,7 @@ body{
   right: 20px;
 }
 
+
 .image1{
   /*宝箱の画像*/
   position: absolute;
@@ -74,6 +82,12 @@ main{
 .titlefont{
   color: #ffff;
   font-size: 45px;
+  font-weight: 400;
+  text-align: center;
+}
+
+h1{
+  color: #ffff;
   font-weight: 400;
   text-align: center;
 }
@@ -128,7 +142,7 @@ nav .inner ul li a:hover{
 .toggle-btn{
   display: block;
   position: absolute;
-  top: 40px;
+  top: 130px;
   left: 30px;
   height: 30px;
   z-index: 30px;
@@ -180,6 +194,7 @@ nav .inner ul li a:hover{
 }
 
 /*mainコンテンツ*/
+
 .font{
   color: #ffff;
   font-size: 30px;
@@ -188,7 +203,7 @@ nav .inner ul li a:hover{
 }
 
 .example{
-  /* position: relative;/*相対配置*/
+  position: relative;/*相対配置*/
 }
 
 /* テーブルを常に画面中心に配置 */
@@ -196,6 +211,7 @@ table {
   margin: 0px auto 20px;
   background-color: #FFB899;
 }
+
 
 /* テーブルの枠線を灰色の1pxの直線とし、1本にまとめる */
 table, th, td {
@@ -226,7 +242,7 @@ th, td {
 
 .parent{
   text-align:center;
-}
+ }
 
 form{
   text-align:center;
@@ -267,6 +283,3 @@ form{
 .styled-select::-ms-expand {
   display: none;
 }
-
-
-

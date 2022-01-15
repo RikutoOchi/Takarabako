@@ -23,7 +23,6 @@ require_once 'listDB.php';
 <main>
     <h1 class="font">締め切り一覧 </h1>
 
-    <div class="example">
         <form class="form" method='POST'>
             <select class="styled-select" name='tag'>
                 <option value='全て'>全て</option>
@@ -77,7 +76,6 @@ require_once 'listDB.php';
             }
             ?>
         </table>
-    </div>
 <div class="parent">
     <a class="btn3" href="register_Deadline.php">新規登録</a>
 </div>
