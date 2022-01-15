@@ -32,7 +32,7 @@ $tags = $stmt->fetchall();
             <!--tagの表示-->
             <select name='tag'>
                 <?php
-                //tagを取得
+                //tagを取得 
                 foreach ($tags as $tags) {
                     $tags_list = "<option value='" . h($tags['tag']);
                     $tags_list .= "'>" . h($tags['tag']) . "</option>";
