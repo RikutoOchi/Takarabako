@@ -27,7 +27,6 @@ require_once 'listDB.php';
             <select class="styled-select" name='tag'>
                 <option value='全て'>全て</option>
                 <?php
-                //tagを取得
                 foreach ($tags as $tags) {
                     $tags_list = "<option value='" . h($tags['tag']);
                     $tags_list .= "'>" . h($tags['tag']) . "</option>";
@@ -49,9 +48,9 @@ require_once 'listDB.php';
             foreach ($tasks as $task) {
             ?>
                 <tr>
-                    <td><?php echo h($task['title']);?></td>
-                    <td><?php echo h($task['deadline']);?></td>
-                    <td><?php echo h($task['detail']);?></td>
+                    <td><?php echo h($task['title']); ?></td>
+                    <td><?php echo h($task['deadline']); ?></td>
+                    <td><?php echo h($task['detail']); ?></td>
                     <td>
                         <!-- 編集画面edit.phpにデータを送信-->
                         <!-- edit.phpをregister_Deadlineと共有にしたい -->
@@ -75,9 +74,11 @@ require_once 'listDB.php';
             <?php
             }
             ?>
+
         </table>
-<div class="parent">
-    <a class="btn3" href="register_Deadline.php">新規登録</a>
-</div>
+    </div>
+    <div class="parent">
+        <a class="btn3" href="register_Deadline.php">新規登録</a>
+    </div>
 </main>
 <script src="../script.js"></script>
