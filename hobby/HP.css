@@ -22,7 +22,6 @@ body{
                     url("background_gold.png"),
                     url("background_coin.png"),
                     url("background_coin.png");
-                    
   background-size: 25% auto,
                    15% auto,
                    5% auto,
@@ -155,7 +154,7 @@ nav .inner ul li a:hover{
   left: 20px;
   width: 30px;
   height: 5px;
-  /*background-color: #333;/*後で消す*/
+  background-color: #333;
   transition: all 0.5s;
   border-radius: 4px;
 }
