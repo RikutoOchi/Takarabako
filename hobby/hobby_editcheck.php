@@ -41,6 +41,7 @@ $tag_list = preg_replace('/\s+/', ' ', $tag_list); //連続する半角スペー
 $tags = explode(" ", $tag_list);
 //tagの個数分登録を繰り返す
 
+
 foreach ($tags as $tag) {
     //tag_idの取得
     $sql = 'SELECT * FROM tags WHERE tag=:tag';
@@ -63,12 +64,17 @@ foreach ($tags as $tag) {
 
     $sql = "INSERT INTO `hobby_tag` (`id`,`hobby_id`, `tag_id`) VALUES (NULL, :hobby_id,:tag_id)";
     $sth = $pdo->prepare($sql);
-    $sth->bindValue(':hobby_id', $id );
+    $sth->bindValue(':hobby_id', $id);
     $sth->bindValue(':tag_id', $tags_id);
     $result2 = $sth->execute();
 }
-
-
+ // hobby=nullのデータの削除
+$delete_sql = "DELETE FROM hobby_tag WHERE hobby_id IS NULL";
+$stmt = $pdo->prepare($delete_sql);
+$stmt->execute();
+$delete_sql = "DELETE FROM `tags` WHERE `tags`.`tag` = ''";
+$stmt = $pdo->prepare($delete_sql);
+$stmt->execute();
 ?>
 <!--ここから表示-->
 <!DOCTYPE html>
