@@ -19,8 +19,8 @@ require_once 'hobbylistDB.php';
     <title>趣味一覧画面</title>
     <link rel="stylesheet" href="hobbylist.css">
 </head>
-<h1>趣味一覧 </h1>
 <main>
+    <h1>趣味一覧 </h1>
 
     <form method='POST'>
         <select class="styled-select" name='tag'>
