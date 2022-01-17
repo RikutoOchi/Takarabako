@@ -180,6 +180,12 @@ nav .inner ul li a:hover{
 }
 
 /*mainコンテンツ*/
+.font1{
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
 .font{
   color: #ffff;
   font-size: 30px;
@@ -268,5 +274,22 @@ form{
   display: none;
 }
 
+.input{
+  position: relative;
+  left: 50px;
+}
 
+.tagname,.sousin{
+  list-style: none;
+}
+
+.daimei,.dating,.tag,.time,.memo{
+  list-style: none;
+  text-align: left;
+  margin-left: 33.5%;
+}
+
+.memo .td{
+  position: absolute;
+}
 
