@@ -1,71 +1,76 @@
-<!--<script src="Movescr.js" charset="utf-8"></script>-->
-<script type="text/javascript" src="http://web-designer.cman.jp/freejs/cmanObjMove_v091.js"></script>
-
+<script src="Movescr.js" charset="utf-8"></script>
 <?php
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/HP_DB.php';
 
+
 if (empty($_SESSION['id'])) {
-    //ログイン画面へ遷移
-    header('Location: ./user/login.php');
+  //ログイン画面へ遷移
+  header('Location: ./user/login.php');
 }
+
 ?>
 
 <main>
-    <!-- 後でフロントの人に見た目を整えてもらう 1 -->
-    <p>もうすぐ締め切りのもの</p>
-    <?php
-    if (!$near_deadline == 'false') {
-        echo $near_deadline['title'];
-    } else {
-        echo '現在締め切りの近いものはありません';
-    }
+    <!-- この機能を右に移動する 1 -->
+    <div class="main0">
 
-    ?>
-    <!-- 1 ここまで -->
-    <div class="title">
-        <h1>My Favorite Contents</h1>
+        <div class="simekiri box">
+            <p class="parent border">もうすぐ締め切りのもの</p>
+            <?php
+      if ($near_deadline == 'false') {
+        echo '現在締め切りの近いものはありません';
+      } else {
+        echo $near_deadline['title'];
+      }
+      ?>
+        </div>
     </div>
 
-    <?php
+    <div class="tag0">
+        <?php
     foreach ($tags as $value) {
     ?>
-    <form method="POST" style="display: inline;">
-        <input type="submit" name="tag" value="<?php echo $value['tag']; ?>">
-    </form>
+        <form method="POST" style="display: inline;">
+            <input class="btn6" type="submit" name="tag" value="<?php echo $value['tag']; ?>">
+        </form>
 
-    <?php
+        <?php
     }
-    //iframeの表示
-    foreach ($all as $value) {
+    ?>
+    </div>
 
+    <div class="main1">
+        <div class="main2">
+            <?php
+      //iframeの表示
+      foreach ($all as $value) {
         $result = str_replace("http://", "https://", $value['URL'], $n);
         $iframe_num = 'frame' . $num;
+      ?>
+            <div class="Move" cmanOMat="move" style="border: 7px solid;border-top-width: 30px;">
+                <iframe id="frame" width="300px" height="300px" src="">
+                    お使いのブラウザはiframeに対応しておりません
+                </iframe>
+            </div>
+            <!-- frameにidを割り当て    -->
+            <script>
+            var iframe_id = document.getElementById('frame')
+            iframe_id.setAttribute('id', '<?php echo $iframe_num; ?>');
+            /*iframeにURL代入   */
+            var url;
+            url = '<?php echo $result; ?>';
+            iframe_id.setAttribute('src', url);
+            </script>
 
-    ?>
-
-    <div class="contents" cmanOMat="move" id="contents"
-        style="  border: 6px solid; border-top-width:25px; color:#FFDACC">
-        <iframe id="frame" width="400px" height="400px" src="">
-            お使いのブラウザはiframeに対応しておりません
-        </iframe>
-    </div>
-    </div>
-    <!-- frameにidを割り当て    -->
-    <script>
-    var iframe_id = document.getElementById('frame')
-    iframe_id.setAttribute('id', '<?php echo $iframe_num; ?>');
-    /*iframeにURL代入   */
-    var url;
-    url = '<?php echo $result; ?>';
-    iframe_id.setAttribute('src', url);
-    </script>
-    <?php
+            <?php
         $num += 1;
-    }
-    ?>
-    <a href="./hobby/register_Hobby.php">新規登録</a>
+      }
+      ?>
 
+            <a href="./hobby/register_Hobby.php"><img src="plus.jpg" alt="新規登録" class="image2"></a>
+        </div>
+    </div>
 </main>
 
 <?php

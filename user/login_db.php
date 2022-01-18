@@ -4,7 +4,6 @@ require_once '../DB.php';
 
 session_start();
 
-
 //空じゃないか確認
 if ($_POST['address'] != '' && $_POST['password'] != '') {
     //login.phpの情報を受け取る

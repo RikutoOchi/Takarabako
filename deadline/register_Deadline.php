@@ -10,7 +10,6 @@ $stmt->execute();
 $tags = $stmt->fetchall();
 
 ?>
-//このファイルにphpの処理を足して登録・編集を兼用できるようにしたい
 <html>
 
 <head>
@@ -22,21 +21,12 @@ $tags = $stmt->fetchall();
 </head>
 
 
-<body>
-    <p class="font1">締め切り登録</p>
+<main>
+    <p class="font">締め切り登録</p>
     <form action="register_Deadline_DB.php" method="POST">
         <table>
             <!--tagの表示-->
-            <select name='tag'>
-                <?php
-                //tagを取得 
-                foreach ($tags as $tags) {
-                    $tags_list = "<option value='" . h($tags['tag']);
-                    $tags_list .= "'>" . h($tags['tag']) . "</option>";
-                    echo $tags_list;
-                }
-                ?>
-            </select>
+
             <tr>
                 <td>題名</td>
                 <td><input type="text" name="title"></td>
@@ -58,11 +48,11 @@ $tags = $stmt->fetchall();
                 <td><textarea name="memo" cols="50" rows="5"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="送信"></td>
+                <td colspan="2"><input class="btn5" type="submit" value="送信"></td>
             </tr>
         </table>
     </form>
-</body>
+</main>
 
 <script src="../script.js"></script>
 

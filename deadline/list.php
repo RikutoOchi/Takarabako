@@ -28,9 +28,8 @@ require_once 'listDB.php';
 
     <h1 class="font">締め切り一覧 </h1>
 
-
-    <form method='POST'>
-        <select name='tag'>
+    <form class="form" method='POST'>
+        <select class="styled-select" name='tag'>
             <option value='全て'>全て</option>
             <?php
             //tagを取得 
@@ -41,10 +40,7 @@ require_once 'listDB.php';
             }
             ?>
         </select>
-        <input type='submit' value='送信' />
-
-
-
+        <input class="btn5" type='submit' value='送信' />
     </form>
     <!-- ここから締め切りリスト-->
     <table border="1">
@@ -68,8 +64,8 @@ require_once 'listDB.php';
                         <input type="hidden" name="id" value="<?= $task['id']; ?>">
                         <input type="hidden" name="title" value="<?= $task['title']; ?>">
                         <input type="hidden" name="detail" value="<?= $task['detail']; ?>">
-                        <input type="hidden" name="deadline" value="<?= $task['deadline']; ?>">
-                        <input type="submit" name="btn" value="編集">
+                        <inputtype="hidden" name="deadline" value="<?= $task['deadline']; ?>">
+                        <input class="btn4" type="submit" name="btn" value="編集">
                     </form>
                     <!-- 削除画面delete.phpにデータを送信-->
                     <form action="delete.php" method="POST">
@@ -77,7 +73,7 @@ require_once 'listDB.php';
                         <input type="hidden" name="detail" value="<?= $task['detail']; ?>">
                         <input type="hidden" name="deadline" value="<?= $task['deadline']; ?>">
                         <input type="hidden" name="id" value="<?= $task['id']; ?>">
-                        <input type="submit" name="btn" value="削除">
+                        <input class="btn4" type="submit" name="btn" value="削除">
                     </form>
                 </td>
             </tr>
@@ -86,7 +82,6 @@ require_once 'listDB.php';
         ?>
 
     </table>
-
     <div class="parent">
         <a class="btn3" href="register_Deadline.php">新規登録</a>
     </div>
