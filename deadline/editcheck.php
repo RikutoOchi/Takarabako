@@ -19,9 +19,9 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $deadline = $_POST['deadline'];
 $tag = $_POST['tag'];
-$old_tag = $tag; //削除するタグを格納している
 $detail = $_POST['detail'];
 $userId = $_SESSION['id']; //本来はセッション変数を使う
+
 //update文
 //$sql = "UPDATE application_lists SET  title ='" . $title . "', deadline ='" . $deadline . "', detail ='" . $detail . "' WHERE id ='" . $id . "'";
 $sql = "UPDATE application_lists SET user_id = :user_id, title = :title, deadline = :deadline, detail = :detail WHERE id = :id";
@@ -35,7 +35,7 @@ $stmt->execute();
 $stmt->fetch();
 
 //関係するapl_tagのカラムを削除
-$delete_sql = "delete FROM apl_tag WHERE apl_tag.apl_id = :id";
+$delete_sql = "delete FROM apl_tag WHERE apl_id = :id";
 $stmt = $pdo->prepare($delete_sql);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
@@ -50,33 +50,48 @@ $stmt->execute();
 //     $stmt->execute();
 // }
 
-//変更後のタグを新規登録
-$tag_id_array = array(); //arrayの初期化
-$tag = explode(" ", $tag);
-if (!empty($tag)) {
-    foreach ($tag as $t) {
-        if ($t == ' ') {
-        } else {
-            $sql = "insert into tags (tag, user_id) values (:tag, :user_id)";
-            $sth = $pdo->prepare($sql);
-            $sth->bindValue(':tag', $t, PDO::PARAM_STR);
-            $sth->bindValue(':user_id', $userId, PDO::PARAM_STR);
-            $result = $sth->execute();
-            $last_tag_id = $pdo->lastInsertId();
-            array_push($tag_id_array, $last_tag_id);
-        }
+#tagsへの登録処理
+#複数のタグをスペースで分割する
+$tag_list = preg_replace('/　/', ' ',$tag); //全角スペースを半角スペースへ
+$tag_list = preg_replace('/\s+/', ' ', $tag_list); //連続する半角スペースを1つの半角スペースへ
+//" "で区切る
+$tags = explode(" ", $tag_list);
+//tagの個数分登録を繰り返す
+
+
+foreach ($tags as $tag) {
+    //tag_idの取得
+    $sql = 'SELECT * FROM tags WHERE tag=:tag';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':tag', $tag);
+    $stmt->execute();
+    $tags_id = $stmt->fetch();
+
+    //もしtagがDBになかったら登録する、あればスルー
+    if (empty($tags_id)) {
+        $sql = "INSERT INTO `tags` (`id`, `user_id`, `tag`) VALUES (NULL,  :user_id, :tag ) ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $userId);
+        $stmt->bindValue(':tag', $tag);
+        $stmt->execute();
+        $tags_id = $pdo->lastInsertId();
+    } else {
+        $tags_id = $tags_id['id'];
     }
 
-    //apl_tagを新規登録
-    foreach ($tag_id_array as $t) {
-        $sql = "insert into apl_tag (apl_id, tag_id) values(:apl_id, :tag_id)";
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':apl_id', $id);
-        $sth->bindValue(':tag_id', $t);
-        $result = $sth->execute();
-    }
+    $sql = "INSERT INTO `apl_tag` (`id`,`apl_id`, `tag_id`) VALUES (NULL, :apl_id,:tag_id)";
+    $sth = $pdo->prepare($sql);
+    $sth->bindValue(':apl_id', $id);
+    $sth->bindValue(':tag_id', $tags_id);
+    $result2 = $sth->execute();
 }
-
+ // hobby=nullのデータの削除
+$delete_sql = "DELETE FROM apl_tag WHERE apl_id IS NULL";
+$stmt = $pdo->prepare($delete_sql);
+$stmt->execute();
+$delete_sql = "DELETE FROM `tags` WHERE `tags`.`tag` = ''";
+$stmt = $pdo->prepare($delete_sql);
+$stmt->execute();
 
 ?>
 <!--ここから表示-->
@@ -98,6 +113,9 @@ if (!empty($tag)) {
     </tr>
     <tr>
         <td>詳細:<?= h($detail) ?></td>
+    </tr>
+    <tr>
+        <td>タグ:<?= h($tag_list) ?></td>
     </tr>
 </table>
 <!--締め切り一覧に戻るボタン-->
