@@ -44,9 +44,9 @@ require_once 'hobbylistDB.php';
 
         <?php
         $idcheck = '';
-       
+
         foreach ($tasks as $value) {
-            $tagedit=''; 
+            $tagedit = '';
             $id = $value['id'];
             if ($id != $idcheck) {
         ?>
@@ -59,15 +59,13 @@ require_once 'hobbylistDB.php';
 
                         foreach ($tasks as $task) {
                             if ($id == $task['id']) {
-                                echo h(' '.$task['tag']);
-                                if(empty($tagedit)){
-                                    $tagedit .=$task['tag'];
-                                }else{
-                                     $tagedit .= str_replace('#', ' #', $task['tag'] );  
+                                echo h(' ' . $task['tag']);
+                                if (empty($tagedit)) {
+                                    $tagedit .= $task['tag'];
+                                } else {
+                                    $tagedit .= str_replace('#', ' #', $task['tag']);
                                 }
-                              
                             }
-                         
                         }
                         ?>
                     </td>
@@ -78,16 +76,17 @@ require_once 'hobbylistDB.php';
                             <input type="hidden" name="URL" value="<?= $value['URL']; ?>">
                             <input type="hidden" name="day_at" value="<?= $value['day_at']; ?>">
                             <input type="hidden" name="memo" value="<?= $value['memo']; ?>">
-                            <input type="hidden" name="tag" value="<?=  $tagedit  ; ?>">
+                            <input type="hidden" name="tag" value="<?= $tagedit; ?>">
                             <input type="hidden" name="id" value="<?= $value['id']; ?>">
 
                             <input type="submit" name="btn" value="編集">
                         </form>
                         <!-- 削除画面delete.phpにデータを送信-->
                         <form action="hobby_delete.php" method="POST">
-                            <input type="hidden" name="title" value="<?= $value['memo']; ?>">
+                            <input type="hidden" name="URL" value="<?= $value['URL']; ?>">
+                            <input type="hidden" name="memo" value="<?= $value['memo']; ?>">
                             <input type="hidden" name="day_at" value="<?= $value['day_at']; ?>">
-                            <input type="hidden" name="tag" value="<?= $value['tag']; ?>">
+                            <input type="hidden" name="tag" value="<?= $tagedit ?>">
                             <input type="hidden" name="id" value="<?= $value['id']; ?>">
                             <input type="submit" name="btn" value="削除">
                         </form>
