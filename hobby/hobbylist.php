@@ -17,11 +17,11 @@ require_once 'hobbylistDB.php';
 
 ?>
 <!-- ここからサイトの表示-->
-<h1>趣味一覧 </h1>
-<main>
 
+<main>
+    <h2 class="font"><span>趣味一覧</span></h2>
     <form method='POST'>
-        <select name='tag'>
+        <select class="styled-select" name='tag'>
             <option value='全て'>全て</option>
             <?php
             //絞り込みができていない
@@ -33,7 +33,7 @@ require_once 'hobbylistDB.php';
             }
             ?>
         </select>
-        <input type='submit' value='送信' />
+        <input class="btn6" type='submit' value='送信' />
     </form>
     <!-- ここから締め切りリスト-->
     <table border="1">
@@ -44,7 +44,6 @@ require_once 'hobbylistDB.php';
 
         <?php
         $idcheck = '';
-
         foreach ($tasks as $value) {
             $tagedit = '';
             $id = $value['id'];
@@ -100,7 +99,9 @@ require_once 'hobbylistDB.php';
 
     </table>
     <!-- //登録画面に遷移 -->
-    <a href="./register_Hobby.php">登録</a>
+    <div class="parent">
+        <a class="btn3" href="register_Deadline.php">登録</a>
+    </div>
     <script src="../script.js"></script>
 
 </main>
