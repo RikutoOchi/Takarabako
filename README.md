@@ -64,5 +64,5 @@
 - テスト用アカウント(Mail:`kobe@denshi.net` PassWord:`kdkd`)にてログインする。
 - 画像のような画面に遷移すれば完了。
 <div align="center">
-  <img src="home.png" alt="image" title="Demo1">
+  <img src="Home.png" alt="image" title="Demo1">
 </div>
