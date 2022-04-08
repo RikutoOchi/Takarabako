@@ -60,5 +60,9 @@
 
 ### 7.2. データベースのテスト
 
-- インターネットブラウザを開き、[データベーステストファイル](http://localhost/shop01008/data/dbconfirm.php)へアクセスする。
-- 表示されている情報が下記のものと同一であるか確認する。
+- インターネットブラウザを開き、[たからばこホームページ](http://localhost/Takarabako/HP.php)へアクセスする。
+- テスト用アカウント(Mail:`kobe@denshi.net` PassWord:`kdkd`)にてログインする。
+- 画像のような画面に遷移すれば完了。
+<div align="center">
+  <img src="img/home.png" alt="image" title="Demo1">
+</div>
